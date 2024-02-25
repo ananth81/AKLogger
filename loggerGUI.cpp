@@ -13,3 +13,16 @@ LoggerGUI::LoggerGUI()
 
    show_all();
 }
+
+void LoggerGUI::showAbout()
+{
+
+   Gtk::MessageDialog dialog(*this, "This is a Logging Utility for Serial Port",
+                             false /* use_markup */, Gtk::MESSAGE_INFO,
+                             Gtk::BUTTONS_CLOSE);
+   dialog.set_secondary_text(
+       "Developers : Budhi Sagar Pande \n\
+                     Ananth Kini");
+
+   dialog.run();
+}

@@ -2,6 +2,7 @@
 #define LOGGER_APP_H
 
 #include <gtkmm.h>
+#include "loggerGUI.h"
 
 class LoggerApplication : public Gtk::Application
 {
@@ -28,6 +29,7 @@ private:
   void on_menu_port_close();
 
   Glib::RefPtr<Gtk::Builder> m_refBuilder;
+  LoggerGUI *mLoggerGUI;
 };
 
 #endif /* LOGGER_APP_H */

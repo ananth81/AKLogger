@@ -1,5 +1,4 @@
 #include "loggerApp.h"
-#include "loggerGUI.h"
 #include <iostream>
 
 LoggerApplication::LoggerApplication()
@@ -121,16 +120,16 @@ void LoggerApplication::on_activate()
 
 void LoggerApplication::create_window()
 {
-  auto win = new LoggerGUI();
+  mLoggerGUI = new LoggerGUI();
 
   // Make sure that the application runs for as long this window is still open:
-  add_window(*win);
+  add_window(*mLoggerGUI);
 
   // Delete the window when it is hidden.
   // That's enough for this simple example.
-  win->signal_hide().connect(sigc::bind<Gtk::Window *>(
-      sigc::mem_fun(*this, &LoggerApplication::on_window_hide), win));
-  win->show_all();
+  mLoggerGUI->signal_hide().connect(sigc::bind<Gtk::Window *>(
+      sigc::mem_fun(*this, &LoggerApplication::on_window_hide), mLoggerGUI));
+  mLoggerGUI->show_all();
 }
 
 void LoggerApplication::on_window_hide(Gtk::Window *window)
@@ -171,5 +170,5 @@ void LoggerApplication::on_menu_file_quit()
 
 void LoggerApplication::on_menu_help_about()
 {
-  std::cout << "App|Help|About was selected." << std::endl;
+  mLoggerGUI->showAbout();
 }
